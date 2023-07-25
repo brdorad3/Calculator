@@ -1,0 +1,88 @@
+.calc{
+    display: flex;
+    width: 500px;
+    height: 540px;
+    background-color: rgb(241, 124, 124);
+    gap: 50px;
+    flex-direction: column;
+    align-items: center;
+}
+.big{
+    display: flex;
+    justify-content: center;
+    background-color: rgb(248, 214, 219);
+}
+.display{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 400px;
+    height: 80px;
+    border-radius: 20px;
+    border: 3px solid black;
+    background-color: rgb(124, 114, 114);
+    margin-top: 25px;
+    
+}
+.numbers{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+   
+}
+.buttons{
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    width: 400px;
+    justify-content: center;
+    align-items: center;
+
+    
+    
+}
+.operators{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+button{
+    font-size: 20px;
+    padding: 15px;
+}
+.del{
+    display: flex;
+}
+button{
+    align-self: start;
+}
+.numop{
+    display: flex;
+    gap: 30px;
+}
+.delete, .clear{
+    padding: 10px 63px 10px 63px;
+    border: 2px solid purple;
+    border-radius: 15px;
+}
+.del{
+    gap: 20px;   
+}
+.one, .two{
+    font-size: 28px;
+    padding: 13px 18px 13px 18px;
+    border: 1px solid black;
+    border-radius: 5px ;
+}
+.two{
+    width: 55px;
+}
+.current, .previous{
+    width: 380px;
+    display: flex;
+    justify-content: flex-end;
+}
+.previous{
+    height: 30px;
+}
