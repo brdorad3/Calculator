@@ -1,28 +1,39 @@
+body{
+    box-sizing: border-box;
+}
 .calc{
     display: flex;
-    width: 500px;
-    height: 540px;
+    width: 400px;
+    height: 500px;
     background-color: rgb(241, 124, 124);
     gap: 50px;
     flex-direction: column;
     align-items: center;
+    border: 3px solid rgb(112, 15, 112);
+    border-radius: 20px;
+    box-shadow: 5px 7px ;
 }
 .big{
     display: flex;
     justify-content: center;
+    align-items: center;
     background-color: rgb(248, 214, 219);
+    height: 100vh;
+    box-sizing: border-box;
+    
 }
 .display{
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: 400px;
+    width: 350px;
     height: 80px;
     border-radius: 20px;
     border: 3px solid black;
     background-color: rgb(124, 114, 114);
     margin-top: 25px;
+    
     
 }
 .numbers{
@@ -53,23 +64,30 @@ button{
 }
 .del{
     display: flex;
+  gap: 5px;
 }
 button{
     align-self: start;
 }
 .numop{
     display: flex;
-    gap: 30px;
+   gap: 5px;
 }
 .delete, .clear{
-    padding: 10px 63px 10px 63px;
-    border: 2px solid purple;
-    border-radius: 15px;
+    font-size: 25px;
+    border: 1px solid black;
+    border-radius: 5px ;
+    padding: 14.5px 7px 14.5px 7px;
+  
 }
-.del{
-    gap: 20px;   
+.clear{
+padding: 14.5px 11.91px 14.5px 11.91px;
 }
-.one, .two{
+.delete{
+    padding: 14.5px 7.746px 14.5px 7.746px;
+}
+
+.one, .two {
     font-size: 28px;
     padding: 13px 18px 13px 18px;
     border: 1px solid black;
@@ -79,10 +97,20 @@ button{
     width: 55px;
 }
 .current, .previous{
-    width: 380px;
+    width: 340px;
     display: flex;
     justify-content: flex-end;
 }
 .previous{
     height: 30px;
+}
+.twor{
+    font-size: 28px;
+    border: 1px solid black;
+    border-radius: 5px ;
+    padding: 13px 48px 13px 48px;
+}
+.btnrow4{
+    display: flex;
+    justify-content: center;
 }

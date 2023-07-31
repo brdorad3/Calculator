@@ -1,91 +1,86 @@
-let firstNum;
-let operator;
-let secondNum;
-let currentValue="";
-let previousValue="";
-let ope;
-const current=document.querySelector('.current');
-const numop=document.querySelector('.numop');
-const oper=document.querySelectorAll('.two');
-const previous=document.querySelector('.previous');
-const equals=document.querySelector('.twor');
+let firstNum = '';
+let operator = '';
+let currentValue = '';
+let result = '';
+let dot=".";
+const current = document.querySelector('.current');
+const previous = document.querySelector('.previous');
+const oper = document.querySelectorAll('.two');
+const equals = document.querySelector('.twor');
 
-const numbers=document.querySelectorAll('.one');
-numbers.forEach((number)=>number.addEventListener("click",function(e){
-handleNumber(e.target.textContent);
-current.textContent=currentValue;
+const numbers = document.querySelectorAll('.one');
+numbers.forEach((number) => number.addEventListener("click", function (e) {
+    handleNumber(e.target.textContent);
+    current.textContent = currentValue;
 }))
 
-const clear=document.querySelector('.clear');
-clear.addEventListener("click", ()=>{
-    current.textContent="";
-    previous.textContent="";
-    currentValue="";
-    previousValue="";
-   
-})
-/*
-const del=document.querySelector('.delete');
-clear.addEventListener("click", ()=>{
-    current.innerHTML+="";
-    previous.textContent=""
-})
-*/
+const operators = document.querySelectorAll('.two');
+operators.forEach((opButton) => opButton.addEventListener("click", function (e) {
+    handleOperator(e.target.textContent);
+}));
 
-const operators=document.querySelectorAll('.two');
-operators.forEach((op)=>op.addEventListener("click",function(e){
-    op==e.target.textContent;
-   
-handleOperator(e.target.textContent);
-previous.textContent=previousValue+" "+" "+operator;
-current.textContent=currentValue;
-}))
+function handleOperator(op) {
+    if (!currentValue) return;
 
-function handleOperator(op){
-    operator=op;
-    previousValue=currentValue;
-    currentValue="";
-    
+    if (firstNum && operator && currentValue) {
+        operate();
+        firstNum = result;
+        currentValue = '';
+    } else if (!firstNum) {
+        firstNum = currentValue;
+        currentValue = '';
+    }
+    operator = op;
+    previous.textContent = `${firstNum} ${operator}`;
 }
 
-function handleNumber(num){
-  currentValue+=num;
+function handleNumber(num) {
+    currentValue += num;
 }
 
-function add(a,b,){
-    return a+b;
-}
-function subtract(a,b){
-    return a-b;
-}
-function multiply(a,b){
-    return a*b;
-}
-function divide(a,b){
-    return a/b;
-}
-
-equals.addEventListener("click",()=>{
+equals.addEventListener("click", () => {
+    if (!firstNum || !operator || !currentValue) return;
+    previous.textContent = `${firstNum} ${operator} ${currentValue}`+" =";
+ 
     operate();
-    previous.textContent="";
-    current.textContent=previousValue;
-})
+    if(result.includes(".")){
+        result=parseFloat(result).toFixed(3);
+    }
+    console.log(result.length);
+    current.textContent = result;
+    firstNum = result;
+    currentValue = '';
+    operator = '';
+        
+});
 
-function operate(){
-    currentValue=Number(currentValue);
-    previousValue=Number(previousValue);
+function operate() {
+    const num1 = parseFloat(firstNum);
+    const num2 = parseFloat(currentValue);
 
-if(operator==='+'){
-   previousValue+=currentValue;
-}
-else if(operator==='-'){
-    previousValue-=currentValue;
-}
-    else if(operator==='*'){
-        previousValue*=currentValue;
-}
-else if(operator==='/'){
-    previousValue/=currentValue;
+    if (operator === '+') {
+        result = (num1 + num2).toString();
+    } else if (operator === '-') {
+        result = (num1 - num2).toString();
+    } else if (operator === '*') {
+        result = (num1 * num2).toString();
+    } else if (operator === '÷') {
+        if(num2==0){alert("No No")}else{
+        result = (num1 / num2).toString();}
+    }
 }
 
-}
+const clear = document.querySelector('.clear');
+clear.addEventListener("click", () => {
+    current.textContent = "";
+    currentValue = "";
+    firstNum = '';
+    operator = '';
+    previous.textContent = '';
+});
+
+const del = document.querySelector('.delete');
+del.addEventListener("click", () => {
+    currentValue = currentValue.slice(0, -1);
+    current.textContent = currentValue;
+});
